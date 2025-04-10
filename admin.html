@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - SnapLens</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="loginForm" class="admin-login">
+      <h2>Admin Login</h2>
+      <form id="adminLogin">
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" style="display: none;">
+      <header>
+        <nav>
+          <div class="logo">SnapLens Admin</div>
+          <button id="logoutBtn" class="btn">Logout</button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="admin-section">
+          <h2>Warranty Submissions</h2>
+          <div class="table-actions">
+            <div class="search-container">
+              <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="Search submissions..."
+              />
+              <span class="search-count"
+                >Total: <span id="warrantyCount">0</span> submissions</span
+              >
+            </div>
+            <button id="downloadData" class="btn">Download Excel</button>
+          </div>
+          <div class="table-container">
+            <table id="warrantyTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Product</th>
+                  <th>Order Number</th>
+                  <th>Platform</th>
+                  <th>Order Date</th>
+                  <th>Submission Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-section">
+          <h2>Product Management</h2>
+          <form id="productForm">
+            <div class="form-group">
+              <label for="productName">Product Name</label>
+              <input type="text" id="productName" required />
+            </div>
+            <div class="form-group">
+              <label for="productLink">Product Link</label>
+              <input type="url" id="productLink" required />
+            </div>
+            <div class="form-group">
+              <label for="productImage">Product Image URL</label>
+              <input type="url" id="productImage" required />
+            </div>
+            <div class="form-group">
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" required></textarea>
+            </div>
+            <button type="submit" class="btn">Add Product</button>
+          </form>
+
+          <div class="product-list" id="productList">
+            <!-- Products will be populated here -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
