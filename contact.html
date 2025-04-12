@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact - SnapLens</title>
+    <title>Contact Us - SnapLens</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
@@ -46,44 +46,108 @@
     </header>
 
     <main>
-      <section class="hero">
-        <h1>Contact Us</h1>
-        <p>Get in touch with our team</p>
-      </section>
-
       <section class="contact-section">
         <div class="contact-container">
           <div class="contact-info">
-            <h2>Get in Touch</h2>
+            <h2><i class="fas fa-address-card"></i> Contact Information</h2>
             <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <p>info@snaplens.com</p>
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Address:</strong><br />
+                123 Camera Street<br />
+                Photo City, PC 12345
+              </div>
             </div>
             <div class="info-item">
               <i class="fas fa-phone"></i>
-              <p>+1 (555) 123-4567</p>
+              <div>
+                <strong>Phone:</strong><br />
+                +1 (555) 123-4567
+              </div>
             </div>
             <div class="info-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <p>123 Camera Street, Photo City, PC 12345</p>
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email:</strong><br />
+                info@snaplens.com
+              </div>
             </div>
           </div>
+
           <div class="contact-form">
-            <h2>Send us a Message</h2>
-            <form id="contactForm">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required />
+            <h2>Send Us a Message</h2>
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+              <div class="form-group with-icon">
+                <label for="name">Full Name *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-user"></i>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your Full Name"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
+              <div class="form-group with-icon">
+                <label for="email">Email Address *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Your Email Address"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
+              <div class="form-group with-icon">
+                <label for="subject">Subject *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-heading"></i>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    placeholder="Message Subject"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
               </div>
-              <button type="submit" class="btn">Send Message</button>
+              <div class="form-group with-icon">
+                <label for="message">Message *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-comment"></i>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    placeholder="Your Message"
+                  ></textarea>
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+              <button type="submit" class="btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
             </form>
           </div>
         </div>
@@ -104,26 +168,30 @@
               href="https://facebook.com/snaplens"
               target="_blank"
               class="facebook"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
             <a
               href="https://instagram.com/snaplens"
               target="_blank"
               class="instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
             <a
               href="https://twitter.com/snaplens"
               target="_blank"
               class="twitter"
-              ><i class="fab fa-twitter"></i
-            ></a>
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
             <a
               href="https://youtube.com/snaplens"
               target="_blank"
               class="youtube"
-              ><i class="fab fa-youtube"></i
-            ></a>
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
           </div>
         </div>
         <div class="footer-section">
@@ -161,6 +229,61 @@
       </p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/toast.js"></script>
+    <script>
+      const contactForm = document.getElementById('contactForm');
+      const formInputs = contactForm.querySelectorAll('input, textarea');
+
+      // Add input event listeners to all form fields
+      formInputs.forEach(input => {
+        input.addEventListener('input', () => {
+          formValidation.validateField(input);
+        });
+
+        input.addEventListener('blur', () => {
+          formValidation.validateField(input);
+        });
+      });
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        // Validate all fields
+        if (!formValidation.validateForm(contactForm)) {
+          toast.error('Please correct the errors in the form', 'Validation Error');
+          return;
+        }
+
+        // Show processing message
+        toast.info('Sending your message...', 'Please Wait');
+
+        // Simulate API call
+        setTimeout(() => {
+          // Reset form
+          contactForm.reset();
+
+          // Remove validation classes
+          document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('filled', 'valid', 'invalid');
+            const errorMessage = group.querySelector('.error-message');
+            if (errorMessage) {
+              errorMessage.remove();
+            }
+          });
+
+          // Show success message
+          toast.success('Your message has been sent successfully!', 'Thank You');
+        }, 2000);
+      }
+
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger-menu');
+      const navMenu = document.querySelector('.nav-links');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    </script>
   </body>
 </html>

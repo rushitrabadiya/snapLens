@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Warranty - SnapLens</title>
+    <title>Warranty Activation - SnapLens</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
@@ -18,6 +18,11 @@
           SnapLens
         </a>
         <div class="nav-menu">
+          <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <ul class="nav-links">
             <li>
               <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -39,55 +44,249 @@
     </header>
 
     <main>
-      <section class="hero">
-        <h1>Warranty Information</h1>
-        <p>Our commitment to quality and customer satisfaction</p>
+      <section class="warranty-hero">
+        <div class="warranty-hero-content">
+          <div class="warranty-icon-animate">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h1>Activate Your Warranty</h1>
+          <p>
+            Protect your investment with our comprehensive warranty coverage
+          </p>
+          <div class="warranty-benefits">
+            <div class="benefit-item">
+              <i class="fas fa-clock"></i>
+              <span>2 Years Coverage</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-tools"></i>
+              <span>Free Repairs</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-exchange-alt"></i>
+              <span>Easy Replacement</span>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section class="warranty-section">
-        <div class="warranty-container">
-          <div class="warranty-content">
-            <div class="warranty-card">
-              <i class="fas fa-shield-alt"></i>
-              <h2>Product Warranty</h2>
-              <p>
-                All SnapLens products come with a 2-year limited warranty
-                covering manufacturing defects and material issues.
-              </p>
-            </div>
-
-            <div class="warranty-info">
-              <h3>What's Covered</h3>
-              <ul>
-                <li><i class="fas fa-check"></i> Manufacturing defects</li>
-                <li><i class="fas fa-check"></i> Material defects</li>
-                <li><i class="fas fa-check"></i> Mechanical malfunctions</li>
-                <li>
-                  <i class="fas fa-check"></i> Electronic component failures
-                </li>
-              </ul>
-
-              <h3>What's Not Covered</h3>
-              <ul>
-                <li>
-                  <i class="fas fa-times"></i> Physical damage from misuse
-                </li>
-                <li><i class="fas fa-times"></i> Water damage</li>
-                <li><i class="fas fa-times"></i> Normal wear and tear</li>
-                <li><i class="fas fa-times"></i> Unauthorized modifications</li>
-              </ul>
-
-              <div class="warranty-process">
-                <h3>Warranty Process</h3>
-                <ol>
-                  <li>Contact our support team</li>
-                  <li>Provide proof of purchase</li>
-                  <li>Describe the issue</li>
-                  <li>Get return authorization</li>
-                  <li>Ship the product</li>
-                </ol>
+      <section class="warranty-steps">
+        <div class="steps-container">
+          <div class="step-progress">
+            <div class="progress-item active" data-step="1">
+              <div class="progress-number">1</div>
+              <div class="progress-label">Registered HoteBuddie Member</div>
+              <div class="step-details">
+                <p>Create your account to get started</p>
+                <i class="fas fa-check-circle success-icon"></i>
               </div>
             </div>
+            <div class="progress-item" data-step="2">
+              <div class="progress-number">2</div>
+              <div class="progress-label">Submit an activation application</div>
+              <div class="step-details">
+                <p>Fill in your product details</p>
+              </div>
+            </div>
+            <div class="progress-item" data-step="3">
+              <div class="progress-number">3</div>
+              <div class="progress-label">Waiting for HoteBuddie review</div>
+              <div class="step-details">
+                <p>We'll review your application</p>
+              </div>
+            </div>
+            <div class="progress-item" data-step="4">
+              <div class="progress-number">4</div>
+              <div class="progress-label">Activated Warranty</div>
+              <div class="step-details">
+                <p>Your warranty is now active</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="warranty-form-section">
+        <div class="warranty-form-container">
+          <div class="form-header">
+            <div class="form-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="form-title">
+              <h2>Contact us for activate warranty!</h2>
+              <p class="form-description">
+                Enter your message activate your warranty for free!
+              </p>
+            </div>
+          </div>
+
+          <form class="warranty-activation-form" id="warrantyForm">
+            <div class="form-row">
+              <div class="form-group with-icon">
+                <label for="name">Your Name *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-user"></i>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+              <div class="form-group with-icon">
+                <label for="phone">Phone *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-phone"></i>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    placeholder="Your Phone Number"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10);"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group with-icon">
+                <label for="email">Email *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+              <div class="form-group with-icon">
+                <label for="platform">Platform *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-shopping-cart"></i>
+                  <select id="platform" name="platform" required>
+                    <option value="">Please select</option>
+                    <option value="amazon">Amazon</option>
+                    <option value="ebay">eBay</option>
+                    <option value="website">Official Website</option>
+                  </select>
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group with-icon">
+                <label for="product">Product Name *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-camera"></i>
+                  <select id="product" name="product" required>
+                    <option value="">Please select</option>
+                    <option value="lens">Professional Camera Lens</option>
+                    <option value="tripod">Camera Tripod</option>
+                    <option value="bag">Camera Bag</option>
+                    <option value="flash">Professional Flash</option>
+                  </select>
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+              <div class="form-group with-icon">
+                <label for="order">Order Number *</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-hashtag"></i>
+                  <input
+                    type="text"
+                    id="order"
+                    name="orderNumber"
+                    required
+                    placeholder="Your Order Number"
+                  />
+                </div>
+                <div class="field-status">
+                  <i class="fas fa-check-circle success"></i>
+                  <i class="fas fa-times-circle error"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group with-icon">
+              <label for="order-date">Order Date *</label>
+              <div class="input-with-icon">
+                <i class="fas fa-calendar"></i>
+                <input type="date" id="order-date" name="orderDate" required />
+              </div>
+              <div class="field-status">
+                <i class="fas fa-check-circle success"></i>
+                <i class="fas fa-times-circle error"></i>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <div class="privacy-note">
+                <i class="fas fa-lock"></i>
+                <p>
+                  * We don't share your personal info with anyone. Check our
+                  <a href="#">Privacy Policy</a> for more information.
+                </p>
+              </div>
+              <button type="submit" class="submit-btn">
+                <span>Activate Now</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="warranty-features">
+        <div class="features-container">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Extended Protection</h3>
+            <p>
+              Get up to 2 years of comprehensive coverage for your equipment
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Expert Repairs</h3>
+            <p>Professional repair service by certified technicians</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Easy Replacement</h3>
+            <p>Quick replacement for irreparable products</p>
           </div>
         </div>
       </section>
@@ -168,6 +367,85 @@
       </p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/toast.js"></script>
+    <script>
+      // Form validation and submission
+      const warrantyForm = document.getElementById('warrantyForm');
+      const formInputs = warrantyForm.querySelectorAll('input, select');
+      const phoneInput = document.getElementById('phone');
+
+      // Phone input handler
+      phoneInput.addEventListener('keypress', (e) => {
+        // Get the input value and remove any non-digits
+        const value = phoneInput.value.replace(/\D/g, '');
+
+        // Prevent input if already at 10 digits and not backspace/delete
+        if (value.length >= 10 && e.key !== 'Backspace' && e.key !== 'Delete') {
+          e.preventDefault();
+        }
+
+        // Only allow numbers
+        if (!/^\d*$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      // Add input event listeners to all form fields
+      formInputs.forEach(input => {
+        input.addEventListener('input', () => {
+          formValidation.validateField(input);
+        });
+
+        input.addEventListener('blur', () => {
+          formValidation.validateField(input);
+        });
+      });
+
+      // Form submission
+      warrantyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Validate all fields
+        if (!formValidation.validateForm(warrantyForm)) {
+          toast.error('Please correct the errors in the form', 'Validation Error');
+          return;
+        }
+
+        // Show processing message
+        toast.info('Processing your warranty activation...', 'Please Wait');
+
+        // Simulate API call
+        setTimeout(() => {
+          // Reset form
+          warrantyForm.reset();
+
+          // Remove validation classes
+          document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('filled', 'valid', 'invalid');
+            const errorMessage = group.querySelector('.error-message');
+            if (errorMessage) {
+              errorMessage.remove();
+            }
+          });
+
+          // Show success message
+          toast.success('Your warranty has been activated successfully!', 'Congratulations');
+
+          // Update progress steps
+          document.querySelectorAll('.progress-item').forEach(item => {
+            item.classList.add('active');
+          });
+        }, 2000);
+      });
+
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger-menu');
+      const navMenu = document.querySelector('.nav-links');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    </script>
   </body>
 </html>

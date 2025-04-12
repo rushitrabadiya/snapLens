@@ -1544,3 +1544,1070 @@ tr:hover {
     font-size: 1rem;
   }
 }
+
+/* Photography Showcase Section */
+.photography-showcase {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 5rem 2rem;
+  margin: 3rem 0;
+}
+
+.showcase-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.showcase-text {
+  flex: 1;
+}
+
+.showcase-text h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.showcase-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.showcase-feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+.showcase-feature i {
+  color: #3498db;
+  font-size: 1.5rem;
+}
+
+.showcase-btn {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.showcase-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.showcase-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.floating-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 5rem 2rem;
+  background: #ffffff;
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-rating {
+  color: #f1c40f;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .showcase-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .showcase-features {
+    align-items: center;
+  }
+
+  .showcase-text h2 {
+    font-size: 2rem;
+  }
+
+  .testimonials h2 {
+    font-size: 2rem;
+  }
+
+  .testimonial-card {
+    text-align: center;
+  }
+}
+
+/* Warranty Activation Page Styles */
+.warranty-hero {
+  background: linear-gradient(135deg, #1a4a6e 0%, #2980b9 50%, #3498db 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.warranty-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.warranty-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Warranty Steps */
+.warranty-steps {
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+}
+
+.steps-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.step-progress::before {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e9ecef;
+  z-index: 1;
+}
+
+.progress-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-number {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  max-width: 120px;
+  line-height: 1.4;
+}
+
+.progress-item.active .progress-number {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.progress-item.active .progress-label {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Warranty Form Section */
+.warranty-form-section {
+  padding: 4rem 2rem;
+}
+
+.warranty-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.warranty-form-container h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.form-description {
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.warranty-activation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.privacy-note {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.privacy-note a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.privacy-note a:hover {
+  text-decoration: underline;
+}
+
+.submit-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .warranty-hero {
+    padding: 3rem 1rem;
+  }
+
+  .warranty-hero h1 {
+    font-size: 2rem;
+  }
+
+  .step-progress {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .step-progress::before {
+    display: none;
+  }
+
+  .progress-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .progress-label {
+    max-width: none;
+  }
+
+  .warranty-form-container {
+    padding: 2rem 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .privacy-note {
+    order: 2;
+  }
+
+  .submit-btn {
+    order: 1;
+    width: 100%;
+  }
+}
+
+/* Enhanced Warranty Hero Section */
+.warranty-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.warranty-icon-animate {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.warranty-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-item i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Enhanced Progress Steps */
+.step-progress {
+  position: relative;
+  counter-reset: step;
+}
+
+.progress-item {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-item:hover {
+  transform: translateY(-5px);
+}
+
+.step-details {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  margin-top: 1rem;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+.step-details::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.step-details p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.success-icon {
+  color: #2ecc71;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Enhanced Form Styles */
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-icon {
+  width: 60px;
+  height: 60px;
+  background: #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.form-progress {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3498db;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 1rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+  padding-left: 2.5rem;
+}
+
+.field-status {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.form-group.filled .field-status {
+  display: block;
+}
+
+.field-status .success {
+  color: #2ecc71;
+}
+
+.field-status .error {
+  color: #e74c3c;
+}
+
+.form-group.filled.valid .success {
+  display: block;
+}
+
+.form-group.filled.invalid .error {
+  display: block;
+}
+
+/* Enhanced Submit Button */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn i {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Warranty Features Section */
+.warranty-features {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: #3498db;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: #3498db;
+  color: white;
+  transform: rotateY(360deg);
+}
+
+/* Notification Popup */
+.notification-popup {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2ecc71;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+  transition: bottom 0.3s ease;
+  z-index: 1000;
+}
+
+.notification-popup.show {
+  bottom: 20px;
+}
+
+.notification-popup i {
+  font-size: 1.5rem;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .warranty-benefits {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .step-details {
+    width: 180px;
+  }
+}
+
+/* Toast Container Styles */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+/* Toast Notification Styles */
+.toast {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-in-out;
+  border-left: 4px solid #4caf50;
+  margin-bottom: 10px;
+}
+
+.toast.closing {
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.toast-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.toast-content {
+  flex-grow: 1;
+}
+
+.toast-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.toast-message {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Toast Types */
+.toast.success {
+  border-left-color: #4caf50;
+  background: linear-gradient(to right, rgba(76, 175, 80, 0.1), transparent);
+}
+
+.toast.success .toast-icon {
+  color: #4caf50;
+}
+
+.toast.error {
+  border-left-color: #f44336;
+  background: linear-gradient(to right, rgba(244, 67, 54, 0.1), transparent);
+}
+
+.toast.error .toast-icon {
+  color: #f44336;
+}
+
+.toast.warning {
+  border-left-color: #ff9800;
+  background: linear-gradient(to right, rgba(255, 152, 0, 0.1), transparent);
+}
+
+.toast.warning .toast-icon {
+  color: #ff9800;
+}
+
+.toast.info {
+  border-left-color: #2196f3;
+  background: linear-gradient(to right, rgba(33, 150, 243, 0.1), transparent);
+}
+
+.toast.info .toast-icon {
+  color: #2196f3;
+}
+
+/* Form Validation Styles */
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group.with-icon .input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-group.with-icon i {
+  position: absolute;
+  left: 12px;
+  color: #666;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.form-group.with-icon input,
+.form-group.with-icon select {
+  padding-left: 40px;
+  width: 100%;
+  height: 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-group.valid .input-with-icon i {
+  color: #4caf50;
+}
+
+.form-group.invalid .input-with-icon i {
+  color: #f44336;
+}
+
+.form-group.valid input,
+.form-group.valid select {
+  border-color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.form-group.invalid input,
+.form-group.invalid select {
+  border-color: #f44336;
+  background-color: rgba(244, 67, 54, 0.05);
+}
+
+.field-status {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.form-group.valid .field-status .success {
+  display: block;
+  color: #4caf50;
+}
+
+.form-group.invalid .field-status .error {
+  display: block;
+  color: #f44336;
+}
+
+/* Form Progress Bar */
+.form-progress {
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #4caf50, #45a049);
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Form Submit Button */
+.submit-btn,
+.btn {
+  background: linear-gradient(to right, #4caf50, #45a049);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover,
+.btn:hover {
+  background: linear-gradient(to right, #45a049, #3d8b40);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Form Inputs Focus States */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* Warranty Steps Progress */
+.step-progress {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  position: relative;
+}
+
+.progress-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.progress-number {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-weight: 600;
+  color: #666;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.progress-item.active .progress-number {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: white;
+}
+
+.progress-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.progress-item.active .progress-label {
+  color: #4caf50;
+}
+
+.step-details {
+  font-size: 13px;
+  color: #888;
+  display: none;
+  margin-top: 5px;
+}
+
+.progress-item:hover .step-details {
+  display: block;
+}
