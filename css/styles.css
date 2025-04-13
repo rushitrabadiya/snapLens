@@ -149,6 +149,22 @@ footer {
   font-size: 0.9rem;
 }
 
+.footer-section p + br {
+  margin-left: 1.5rem;
+}
+
+.info-item div br {
+  margin-top: 0.25rem;
+}
+
+.footer-section p:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section p + br + br {
+  margin-left: 1.5rem;
+}
+
 .social-links {
   display: flex;
   gap: 0.75rem;
@@ -1230,42 +1246,136 @@ tr:hover {
 
 .feature-card {
   background: white;
-  padding: 2rem;
-  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
 }
 
-.feature-card i {
-  font-size: 2.5rem;
-  color: var(--primary-color);
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.1) 0%,
+    rgba(52, 152, 219, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+  transform: none;
+  opacity: 1;
+}
+
+.feature-icon {
+  position: relative;
   margin-bottom: 1.5rem;
+  z-index: 1;
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  background: var(--background-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-circle::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.8);
+}
+
+.feature-card:hover .icon-circle::before {
+  transform: none;
+  opacity: 1;
+}
+
+.feature-card:hover .icon-circle {
+  transform: none;
+}
+
+.feature-icon i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  transition: none;
+}
+
+.feature-card:hover .feature-icon i {
+  transform: none;
+  color: var(--primary-color);
 }
 
 .feature-card h3 {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
+  color: var(--text-dark);
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover h3 {
+  color: var(--primary-color);
 }
 
 .feature-card p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
   .features-container {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 
-  .features {
-    padding: 3rem 1rem;
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .feature-icon i {
+    font-size: 1.8rem;
   }
 }
 
@@ -2178,13 +2288,14 @@ tr:hover {
 
 /* Warranty Features Section */
 .warranty-features {
-  padding: 4rem 2rem;
-  background: #f8f9fa;
+  padding: 4rem 0;
+  background: var(--background-light);
 }
 
 .features-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -2192,36 +2303,137 @@ tr:hover {
 
 .feature-card {
   background: white;
-  padding: 2rem;
-  border-radius: 15px;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.1) 0%,
+    rgba(52, 152, 219, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+  transform: none;
+  opacity: 1;
 }
 
 .feature-icon {
-  width: 80px;
-  height: 80px;
-  background: #f8f9fa;
+  position: relative;
+  margin-bottom: 1.5rem;
+  z-index: 1;
+}
+
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  background: var(--background-light);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-circle::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.8);
+}
+
+.feature-card:hover .icon-circle::before {
+  transform: none;
+  opacity: 1;
+}
+
+.feature-card:hover .icon-circle {
+  transform: none;
+}
+
+.feature-icon i {
   font-size: 2rem;
-  color: #3498db;
+  color: var(--primary-color);
+  transition: none;
+}
+
+.feature-card:hover .feature-icon i {
+  transform: none;
+  color: var(--primary-color);
+}
+
+.feature-card h3 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
   transition: all 0.3s ease;
 }
 
-.feature-card:hover .feature-icon {
-  background: #3498db;
-  color: white;
-  transform: rotateY(360deg);
+.feature-card:hover h3 {
+  color: var(--primary-color);
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .feature-icon i {
+    font-size: 1.8rem;
+  }
 }
 
 /* Notification Popup */
@@ -2610,4 +2822,105 @@ tr:hover {
 
 .progress-item:hover .step-details {
   display: block;
+}
+
+.address-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0;
+}
+
+.address-list li {
+  margin-bottom: 0.25rem;
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.footer-section .address-list {
+  margin-left: 1.5rem;
+}
+
+.info-item .address-list {
+  margin-top: 0.5rem;
+}
+
+.contact-details {
+  margin-top: 1rem;
+}
+
+.contact-details p {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.contact-details i {
+  width: 20px;
+  text-align: center;
+  color: #3498db;
+  margin-top: 4px;
+}
+
+.contact-details p:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-details .address-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-details .address-list li {
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.contact-details .address-list li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-details .address-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.contact-details .address-wrapper i {
+  width: 20px;
+  text-align: center;
+  color: #3498db;
+  margin-top: 4px;
+}
+
+.contact-details .address-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-details .address-list li {
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+}
+
+.contact-details .address-list li:first-child {
+  margin-bottom: 0;
+  display: inline;
+}
+
+.contact-details .address-list li:nth-child(2) {
+  display: inline;
+}
+
+.contact-details .address-list li:last-child {
+  margin-top: 0.25rem;
+}
+
+.contact-details .address-list li:not(:last-child):after {
+  content: ", ";
 }

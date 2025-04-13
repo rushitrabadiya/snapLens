@@ -184,7 +184,7 @@ const formValidation = {
         break;
 
       case "message":
-        if (value.length < 10 || value.length > 1000) {
+        if (value.length < 5 || value.length > 1000) {
           this.setFieldStatus(
             formGroup,
             "invalid",

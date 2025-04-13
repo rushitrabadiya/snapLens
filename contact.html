@@ -50,26 +50,26 @@
         <div class="contact-container">
           <div class="contact-info">
             <h2><i class="fas fa-address-card"></i> Contact Information</h2>
-            <div class="info-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <div>
-                <strong>Address:</strong><br />
-                123 Camera Street<br />
-                Photo City, PC 12345
-              </div>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-phone"></i>
-              <div>
-                <strong>Phone:</strong><br />
-                +1 (555) 123-4567
-              </div>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-envelope"></i>
-              <div>
-                <strong>Email:</strong><br />
-                info@snaplens.com
+            <div class="contact-details">
+              <p>
+                <i class="fas fa-phone"></i>
+                +91 6359420196
+              </p>
+              <p>
+                <i class="fas fa-phone"></i>
+                +91 6352430783
+              </p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                seagullexports035@gmail.com
+              </p>
+              <div class="address-wrapper">
+                <i class="fas fa-map-marker-alt"></i>
+                <ul class="address-list">
+                  <li>5-524 Rk World Tower</li>
+                  <li>Sheetal Park, 150ft. Ring Road , Rajkot-360007</li>
+                  <!-- <li>Rajkot-360007</li> -->
+                </ul>
               </div>
             </div>
           </div>
@@ -215,12 +215,28 @@
         </div>
         <div class="footer-section">
           <h3><i class="fas fa-phone-alt"></i> Contact Us</h3>
-          <p><i class="fas fa-envelope"></i> Email: info@snaplens.com</p>
-          <p><i class="fas fa-phone"></i> Phone: +1 (555) 123-4567</p>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Address: 123 Camera Street,
-            Photo City, PC 12345
-          </p>
+          <div class="contact-details">
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 6359420196
+            </p>
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 6352430783
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              seagullexports035@gmail.com
+            </p>
+            <div class="address-wrapper">
+              <i class="fas fa-map-marker-alt"></i>
+              <ul class="address-list">
+                <li>5-524 Rk World Tower</li>
+                <li>Sheetal Park, 150ft. Ring Road , Rajkot-360007</li>
+                <!-- <li>Rajkot-360007</li> -->
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <p class="copyright">
@@ -230,6 +246,7 @@
     </footer>
 
     <script src="js/toast.js"></script>
+    <script src="js/sheets.js"></script>
     <script>
       const contactForm = document.getElementById('contactForm');
       const formInputs = contactForm.querySelectorAll('input, textarea');
@@ -245,7 +262,7 @@
         });
       });
 
-      function handleSubmit(event) {
+      async function handleSubmit(event) {
         event.preventDefault();
 
         // Validate all fields
@@ -257,8 +274,19 @@
         // Show processing message
         toast.info('Sending your message...', 'Please Wait');
 
-        // Simulate API call
-        setTimeout(() => {
+        try {
+          // Get form data
+          const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value,
+            submissionDate: new Date().toISOString()
+          };
+
+          // Submit to Google Sheets
+          await sheets.submitContactForm(formData);
+
           // Reset form
           contactForm.reset();
 
@@ -273,7 +301,10 @@
 
           // Show success message
           toast.success('Your message has been sent successfully!', 'Thank You');
-        }, 2000);
+        } catch (error) {
+          toast.error('Failed to send message. Please try again.', 'Error');
+          console.error('Form submission error:', error);
+        }
       }
 
       // Mobile menu toggle

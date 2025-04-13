@@ -9,6 +9,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <style>
+      .warranty-section {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+      }
+
+      .warranty-content {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .warranty-section {
+          margin: 1rem auto;
+          padding: 0 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -46,31 +67,39 @@
     <main>
       <section class="warranty-hero">
         <div class="warranty-hero-content">
-          <div class="warranty-icon-animate">
-            <i class="fas fa-shield-alt"></i>
+          <div class="warranty-hero-wrapper">
+            <div class="warranty-shield-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="warranty-text">
+              <h1>Register Your Product Warranty</h1>
+              <p>Secure your investment with premium protection and support</p>
+            </div>
           </div>
-          <h1>Activate Your Warranty</h1>
-          <p>
-            Protect your investment with our comprehensive warranty coverage
-          </p>
           <div class="warranty-benefits">
             <div class="benefit-item">
-              <i class="fas fa-clock"></i>
+              <div class="benefit-icon">
+                <i class="fas fa-clock"></i>
+              </div>
               <span>2 Years Coverage</span>
             </div>
             <div class="benefit-item">
-              <i class="fas fa-tools"></i>
+              <div class="benefit-icon">
+                <i class="fas fa-tools"></i>
+              </div>
               <span>Free Repairs</span>
             </div>
             <div class="benefit-item">
-              <i class="fas fa-exchange-alt"></i>
+              <div class="benefit-icon">
+                <i class="fas fa-exchange-alt"></i>
+              </div>
               <span>Easy Replacement</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="warranty-steps">
+      <!-- <section class="warranty-steps">
         <div class="steps-container">
           <div class="step-progress">
             <div class="progress-item active" data-step="1">
@@ -104,7 +133,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <section class="warranty-form-section">
         <div class="warranty-form-container">
@@ -113,9 +142,10 @@
               <i class="fas fa-file-alt"></i>
             </div>
             <div class="form-title">
-              <h2>Contact us for activate warranty!</h2>
+              <h2>Submit Your Warranty Registration</h2>
               <p class="form-description">
-                Enter your message activate your warranty for free!
+                Complete the form below to register your product for warranty
+                coverage
               </p>
             </div>
           </div>
@@ -248,14 +278,14 @@
 
             <div class="form-footer">
               <div class="privacy-note">
-                <i class="fas fa-lock"></i>
                 <p>
+                  <i class="fas fa-lock"></i>
                   * We don't share your personal info with anyone. Check our
                   <a href="#">Privacy Policy</a> for more information.
                 </p>
               </div>
               <button type="submit" class="submit-btn">
-                <span>Activate Now</span>
+                <span>Submit for Review</span>
                 <i class="fas fa-arrow-right"></i>
               </button>
             </div>
@@ -267,7 +297,9 @@
         <div class="features-container">
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
+              <div class="icon-circle">
+                <i class="fas fa-shield-alt"></i>
+              </div>
             </div>
             <h3>Extended Protection</h3>
             <p>
@@ -276,14 +308,18 @@
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-tools"></i>
+              <div class="icon-circle">
+                <i class="fas fa-tools"></i>
+              </div>
             </div>
             <h3>Expert Repairs</h3>
             <p>Professional repair service by certified technicians</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-sync-alt"></i>
+              <div class="icon-circle">
+                <i class="fas fa-sync-alt"></i>
+              </div>
             </div>
             <h3>Easy Replacement</h3>
             <p>Quick replacement for irreparable products</p>
@@ -353,12 +389,28 @@
         </div>
         <div class="footer-section">
           <h3><i class="fas fa-phone-alt"></i> Contact Us</h3>
-          <p><i class="fas fa-envelope"></i> Email: info@snaplens.com</p>
-          <p><i class="fas fa-phone"></i> Phone: +1 (555) 123-4567</p>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Address: 123 Camera Street,
-            Photo City, PC 12345
-          </p>
+          <div class="contact-details">
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 6359420196
+            </p>
+            <p>
+              <i class="fas fa-phone"></i>
+              +91 6352430783
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              seagullexports035@gmail.com
+            </p>
+            <div class="address-wrapper">
+              <i class="fas fa-map-marker-alt"></i>
+              <ul class="address-list">
+                <li>5-524 Rk World Tower</li>
+                <li>Sheetal Park, 150ft. Ring Road , Rajkot-360007</li>
+                <!-- <li>Rajkot-360007</li> -->
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <p class="copyright">
@@ -368,6 +420,7 @@
     </footer>
 
     <script src="js/toast.js"></script>
+    <script src="js/sheets.js"></script>
     <script>
       // Form validation and submission
       const warrantyForm = document.getElementById('warrantyForm');
@@ -402,7 +455,7 @@
       });
 
       // Form submission
-      warrantyForm.addEventListener('submit', (e) => {
+      warrantyForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Validate all fields
@@ -414,8 +467,22 @@
         // Show processing message
         toast.info('Processing your warranty activation...', 'Please Wait');
 
-        // Simulate API call
-        setTimeout(() => {
+        try {
+          // Get form data
+          const formData = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            platform: document.getElementById('platform').value,
+            product: document.getElementById('product').value,
+            orderNumber: document.getElementById('order').value,
+            orderDate: document.getElementById('order-date').value,
+            submissionDate: new Date().toISOString()
+          };
+
+          // Submit to Google Sheets
+          await sheets.submitWarrantyForm(formData);
+
           // Reset form
           warrantyForm.reset();
 
@@ -435,7 +502,10 @@
           document.querySelectorAll('.progress-item').forEach(item => {
             item.classList.add('active');
           });
-        }, 2000);
+        } catch (error) {
+          toast.error('Failed to submit warranty form. Please try again.', 'Error');
+          console.error('Form submission error:', error);
+        }
       });
 
       // Mobile menu toggle
