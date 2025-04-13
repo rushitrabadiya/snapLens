@@ -762,6 +762,41 @@
       video.play().catch(function(error) {
         console.log("Video play failed");
       });
+
+      // Load products from localStorage
+      function loadProducts() {
+        const productsContainer = document.querySelector('.products-container');
+        const storedProducts = localStorage.getItem('products');
+        let products = [];
+
+        if (storedProducts) {
+          products = JSON.parse(storedProducts);
+        }
+
+        productsContainer.innerHTML = ''; // Clear existing products
+        products.forEach(product => {
+          const productHTML = `
+            <div class="product-card">
+              <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+              </div>
+              <div class="product-details">
+                <h3>${product.name}</h3>
+                <p class="description">${product.description}</p>
+                <p class="price">$${product.price.toFixed(2)}</p>
+                <button class="btn btn-primary">
+                  <i class="fas fa-shopping-cart"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          `;
+          productsContainer.innerHTML += productHTML;
+        });
+      }
+
+      // Initialize
+      loadProducts();
     </script>
   </body>
 </html>

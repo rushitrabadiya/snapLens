@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - SnapLens</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        min-height: 100vh;
+        display: flex;
+      }
+
+      .sidebar {
+        width: 250px;
+        background: #2c3e50;
+        color: white;
+        padding: 2rem 0;
+        position: fixed;
+        height: 100vh;
+      }
+
+      .sidebar-header {
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .sidebar-header i {
+        font-size: 1.5rem;
+        color: #3498db;
+      }
+
+      .nav-menu {
+        list-style: none;
+      }
+
+      .nav-item {
+        margin-bottom: 0.5rem;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: #34495e;
+        color: #3498db;
+      }
+
+      .nav-link i {
+        width: 20px;
+        text-align: center;
+      }
+
+      .main-content {
+        flex: 1;
+        margin-left: 250px;
+        padding: 2rem;
+      }
+
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e9ecef;
+      }
+
+      .page-title {
+        color: #2c3e50;
+        font-size: 1.8rem;
+      }
+
+      .admin-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .card-title {
+        color: #2c3e50;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background: #3498db;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #2980b9;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .product-item {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .product-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .product-info {
+        flex: 1;
+      }
+
+      .product-name {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.25rem;
+      }
+
+      .product-price {
+        color: #3498db;
+        font-weight: 500;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .action-btn {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .edit-btn {
+        background: #f1c40f;
+        color: white;
+      }
+
+      .delete-btn {
+        background: #e74c3c;
+        color: white;
+      }
+
+      .action-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+
+      /* Dashboard Stats */
+      .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .stat-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .stat-card i {
+        font-size: 2rem;
+        color: #3498db;
+        margin-bottom: 1rem;
+      }
+
+      .stat-card h3 {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-card p {
+        color: #2c3e50;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      /* Settings Form */
+      .settings-form {
+        max-width: 600px;
+      }
+
+      .settings-form .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .settings-form label {
+        display: block;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .settings-form input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .settings-form input:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        outline: none;
+      }
+
+      /* Messages and Orders List */
+      .messages-list,
+      .orders-list {
+        padding: 1rem 0;
+      }
+
+      .messages-list p,
+      .orders-list p {
+        color: #7f8c8d;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* Hide sections by default */
+      .admin-section {
+        display: none;
+      }
+
+      /* Show active section */
+      .admin-section.active {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 70px;
+          padding: 1rem 0;
+        }
+
+        .sidebar-header span,
+        .nav-link span {
+          display: none;
+        }
+
+        .main-content {
+          margin-left: 70px;
+        }
+
+        .nav-link {
+          justify-content: center;
+          padding: 1rem;
+        }
+
+        .nav-link i {
+          margin: 0;
+        }
+
+        .dashboard-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .page-header {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      /* Modal Styles */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .modal h2 {
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+      }
+
+      .modal .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .modal label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+      }
+
+      .modal input,
+      .modal textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+
+      .modal textarea {
+        height: 100px;
+        resize: vertical;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .modal-actions .btn {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-camera"></i>
+        <span>SnapLens Admin</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#dashboard" class="nav-link active">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#products" class="nav-link">
+            <i class="fas fa-box"></i>
+            <span>Products</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#orders" class="nav-link">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#messages" class="nav-link">
+            <i class="fas fa-envelope"></i>
+            <span>Messages</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#settings" class="nav-link">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" id="logoutBtn" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="admin-section">
+        <div class="page-header">
+          <h1 class="page-title">Dashboard</h1>
+        </div>
+        <div class="admin-card">
+          <div class="card-header">
+            <h2 class="card-title">Overview</h2>
+          </div>
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <i class="fas fa-box"></i>
+              <h3>Total Products</h3>
+              <p>24</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-shopping-cart"></i>
+              <h3>Total Orders</h3>
+              <p>156</p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-envelope"></i>
+              <h3>New Messages</h3>
+              <p>8</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section id="products" class="admin-section">
+        <div class="page-header">
+          <h1 class="page-title">Products</h1>
+          <button class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            <span>Add New Product</span>
+          </button>
+        </div>
+        <div class="admin-card">
+          <div class="card-header">
+            <h2 class="card-title">Product List</h2>
+          </div>
+          <div class="product-grid">
+            <!-- Products will be loaded here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section id="orders" class="admin-section">
+        <div class="page-header">
+          <h1 class="page-title">Orders</h1>
+        </div>
+        <div class="admin-card">
+          <div class="card-header">
+            <h2 class="card-title">Recent Orders</h2>
+          </div>
+          <div class="orders-list">
+            <!-- Orders will be loaded here -->
+            <p>No orders to display</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Messages Section -->
+      <section id="messages" class="admin-section">
+        <div class="page-header">
+          <h1 class="page-title">Messages</h1>
+        </div>
+        <div class="admin-card">
+          <div class="card-header">
+            <h2 class="card-title">Customer Messages</h2>
+          </div>
+          <div class="messages-list">
+            <!-- Messages will be loaded here -->
+            <p>No messages to display</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings" class="admin-section">
+        <div class="page-header">
+          <h1 class="page-title">Settings</h1>
+        </div>
+        <div class="admin-card">
+          <div class="card-header">
+            <h2 class="card-title">Website Settings</h2>
+          </div>
+          <form class="settings-form">
+            <div class="form-group">
+              <label>Website Name</label>
+              <input type="text" value="SnapLens" />
+            </div>
+            <div class="form-group">
+              <label>Contact Email</label>
+              <input type="email" value="seagullexports035@gmail.com" />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i>
+              <span>Save Changes</span>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Check authentication
+      if (!sessionStorage.getItem('adminAuthenticated')) {
+        window.location.href = 'admin-login.html';
+      }
+
+      // Handle navigation
+      function loadSection(section) {
+        // Hide all sections first
+        document.querySelectorAll('.admin-section').forEach(el => el.style.display = 'none');
+
+        // Remove active class from all nav links
+        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+
+        // Add active class to current nav link
+        document.querySelector(`[href="#${section}"]`).classList.add('active');
+
+        // Show current section
+        const sectionEl = document.getElementById(section);
+        if (sectionEl) {
+          sectionEl.style.display = 'block';
+        }
+
+        // Update page title
+        document.querySelector('.page-title').textContent = section.charAt(0).toUpperCase() + section.slice(1);
+      }
+
+      // Handle hash change
+      window.addEventListener('hashchange', () => {
+        const section = window.location.hash.slice(1) || 'dashboard';
+        loadSection(section);
+      });
+
+      // Initial load
+      window.addEventListener('load', () => {
+        const section = window.location.hash.slice(1) || 'dashboard';
+        loadSection(section);
+      });
+
+      // Logout functionality
+      document.getElementById('logoutBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        sessionStorage.removeItem('adminAuthenticated');
+        window.location.href = 'admin-login.html';
+      });
+
+      // Product data array
+      let products = [
+        {
+          id: 1,
+          name: 'Camera Lens XYZ',
+          price: 299.99,
+          image: 'images/products/lens1.jpg',
+          description: 'Professional grade camera lens'
+        },
+        {
+          id: 2,
+          name: 'Tripod Stand Pro',
+          price: 149.99,
+          image: 'images/products/tripod1.jpg',
+          description: 'Stable tripod for professional photography'
+        },
+        {
+          id: 3,
+          name: 'Camera Flash LED',
+          price: 89.99,
+          image: 'images/products/flash1.jpg',
+          description: 'High-power LED flash for perfect lighting'
+        }
+      ];
+
+      // Save products to localStorage
+      function saveProducts() {
+        localStorage.setItem('products', JSON.stringify(products));
+      }
+
+      // Load products from localStorage
+      function loadStoredProducts() {
+        const storedProducts = localStorage.getItem('products');
+        if (storedProducts) {
+          products = JSON.parse(storedProducts);
+        }
+      }
+
+      // Add new product
+      function addProduct(product) {
+        const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+        const newProduct = {
+          id: newId,
+          ...product
+        };
+        products.push(newProduct);
+        saveProducts();
+        loadProducts();
+      }
+
+      // Edit product
+      function editProduct(id, updatedProduct) {
+        const index = products.findIndex(p => p.id === id);
+        if (index !== -1) {
+          products[index] = { ...products[index], ...updatedProduct };
+          saveProducts();
+          loadProducts();
+        }
+      }
+
+      // Delete product
+      function deleteProduct(id) {
+        const index = products.findIndex(p => p.id === id);
+        if (index !== -1) {
+          products.splice(index, 1);
+          saveProducts();
+          loadProducts();
+        }
+      }
+
+      // Load products to grid
+      function loadProducts() {
+        const productGrid = document.querySelector('.product-grid');
+        productGrid.innerHTML = ''; // Clear existing products
+
+        products.forEach(product => {
+          const productHTML = `
+            <div class="product-item" data-id="${product.id}">
+              <img src="${product.image}" alt="${product.name}" class="product-image">
+              <div class="product-info">
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">$${product.price.toFixed(2)}</div>
+              </div>
+              <div class="product-actions">
+                <button class="action-btn edit-btn" onclick="openEditModal(${product.id})" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="action-btn delete-btn" onclick="confirmDelete(${product.id})" title="Delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          `;
+          productGrid.innerHTML += productHTML;
+        });
+
+        // Update dashboard stats
+        document.querySelector('.stat-card p').textContent = products.length;
+      }
+
+      // Add product modal handlers
+      document.querySelector('.btn-primary').addEventListener('click', () => {
+        openAddModal();
+      });
+
+      function openAddModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+          <div class="modal-content">
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+              <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" required>
+              </div>
+              <div class="form-group">
+                <label>Price ($)</label>
+                <input type="number" step="0.01" name="price" required>
+              </div>
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" name="image" required>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" required></textarea>
+              </div>
+              <div class="modal-actions">
+                <button type="submit" class="btn btn-primary">Add Product</button>
+                <button type="button" class="btn" onclick="closeModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById('addProductForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const newProduct = {
+            name: formData.get('name'),
+            price: parseFloat(formData.get('price')),
+            image: formData.get('image'),
+            description: formData.get('description')
+          };
+          addProduct(newProduct);
+          closeModal();
+        });
+      }
+
+      function openEditModal(id) {
+        const product = products.find(p => p.id === id);
+        if (!product) return;
+
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+          <div class="modal-content">
+            <h2>Edit Product</h2>
+            <form id="editProductForm">
+              <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" value="${product.name}" required>
+              </div>
+              <div class="form-group">
+                <label>Price ($)</label>
+                <input type="number" step="0.01" name="price" value="${product.price}" required>
+              </div>
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" name="image" value="${product.image}" required>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" required>${product.description}</textarea>
+              </div>
+              <div class="modal-actions">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn" onclick="closeModal()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById('editProductForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const updatedProduct = {
+            name: formData.get('name'),
+            price: parseFloat(formData.get('price')),
+            image: formData.get('image'),
+            description: formData.get('description')
+          };
+          editProduct(id, updatedProduct);
+          closeModal();
+        });
+      }
+
+      function confirmDelete(id) {
+        if (confirm('Are you sure you want to delete this product?')) {
+          deleteProduct(id);
+        }
+      }
+
+      function closeModal() {
+        const modal = document.querySelector('.modal');
+        if (modal) {
+          modal.remove();
+        }
+      }
+
+      // Initialize
+      loadStoredProducts();
+      loadProducts();
+    </script>
+  </body>
+</html>
